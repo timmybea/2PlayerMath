@@ -66,7 +66,7 @@
         if(self.gameController.activePlayer.lives == 0)
         {
             self.messageLabel.textColor = [UIColor redColor];
-            [self.messageLabel setFont:[UIFont systemFontOfSize:20]];
+            self.messageLabel.text = @"Incorrect";
             self.player = [self.gameController changeActivePlayer];
 
             UIAlertController * alert =   [UIAlertController
@@ -81,6 +81,7 @@
                                  {
                                      self.gameController = [[GameController alloc] init];
                                      [self.gameController changeActivePlayer];
+                                     self.messageLabel.text = @"";
                                      self.p1LivesLabel.text = [NSString stringWithFormat:@"Player1: %ld lives", [self.gameController player1Lives]];
                                      self.p2LivesLabel.text = [NSString stringWithFormat:@"Player2: %ld lives", [self.gameController player2Lives]];
                                      [alert dismissViewControllerAnimated:YES completion:nil];
@@ -91,7 +92,7 @@
         else
         {
             self.messageLabel.textColor = [UIColor redColor];
-            self.messageLabel.text = @"Incorrect. try again.";
+            self.messageLabel.text = @"Incorrect";
         }
         
     }
